@@ -13,21 +13,18 @@
 	font: 12px Helmet, Freesans, sans-serif;
 	background-color: #ff110b;
 	border-style: outset;
-	border-width: large;
 }
 #teaching {
 	font: 12px Helmet, Freesans, sans-serif;
 	color: white;
 	background-color: #11110b;
 	border-style: outset;
-	border-width: small;
 }
 #publications {
 	font: 15px Verdana, Freesans, sans-serif;
 	color: white;
 	background-color: #bbbbbb;
 	border-style: inset;
-	border-width: small;
 }
 ul>li{
 	font: 20px Verdana, Geneva, sans-serif;
@@ -35,16 +32,14 @@ ul>li{
 }
 li {
 	border-style: solid;
-	border-width: medium;
 }
 
 h4{
 	border-style: outset;
-	border-width: large;
+	background-image: url("http://cs.sites.unc.edu/files/2013/12/Mayer-patel.jpeg");
 }
 h3{
 	border-style: solid;
-	border-width: large;
 }
 
 .description {
@@ -60,7 +55,6 @@ h3{
 div:hover{
 
 	border-style: inset;
-	border-width: large;
 
 	font: 17px Verdana, Geneva, sans-serif;
 	color: blue;
