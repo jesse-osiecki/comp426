@@ -1,0 +1,70 @@
+/*Jesse Osiecki
+//A1.css for A1 css assignment in comp 426 (KMP) fall 2014
+//fun!
+//I hearby acknowlege that I did not give or receive unauthorized help on this assignment per the UNC honor pledge
+*/
+
+#demographic {
+	font: 25px Helmet, Freesans, sans-serif;
+	background-color: #00ffbb;
+}
+
+#research {
+	font: 12px Helmet, Freesans, sans-serif;
+	background-color: #ff110b;
+	border-style: outset;
+	border-width: large;
+}
+#teaching {
+	font: 12px Helmet, Freesans, sans-serif;
+	color: white;
+	background-color: #11110b;
+	border-style: outset;
+	border-width: small;
+}
+#publications {
+	font: 15px Verdana, Freesans, sans-serif;
+	color: white;
+	background-color: #bbbbbb;
+	border-style: inset;
+	border-width: small;
+}
+ul>li{
+	font: 20px Verdana, Geneva, sans-serif;
+	background-color: #00aa00;
+}
+li {
+	border-style: solid;
+	border-width: medium;
+}
+
+h4{
+	border-style: outset;
+	border-width: large;
+}
+h3{
+	border-style: solid;
+	border-width: large;
+}
+
+.description {
+	width: 1000px;
+}
+.title {
+	height: 100px;
+	border-style: solid;
+	color: #000099;
+}
+
+
+div:hover{
+
+	border-style: inset;
+	border-width: large;
+
+	font: 17px Verdana, Geneva, sans-serif;
+	color: blue;
+	background-image:  url("http://31.media.tumblr.com/59c48f4371d933947ed988ad6b2e23c0/tumblr_mouarduqIY1sput2eo1_500.gif");
+}
+
+
