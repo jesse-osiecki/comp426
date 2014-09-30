@@ -1,4 +1,13 @@
+//
+//Jesse Osiecki 
+//a2.js
+//all of my jquery for a minesweeper game
+//
+//
+//
+//
 //Model
+
 //
 //debug vars
 var bomb_total=0;
@@ -158,7 +167,10 @@ $(document).ready(function () {
                         window.location.reload();
                     }
                     else if(board.squares[r][c].bombLoc == 0){
-                        //traverseZeros(   
+                        score +=1;
+                        $(".score").text(score);
+                        $(this).text(board.squares[r][c].bombLoc);
+                        //traverseZeros(board.squares, r, c, rows, cols);   
                     }
                     else{
                         score +=1;
@@ -200,6 +212,28 @@ function drawboard(r, c){
         }
     }
 }
-
+//
+//
+//This funct blew up recursion in jscript. Not sure why but I am tired and the deadline is almost here. So everything will be less pretty.
+//
+//
+//function traverseZeros(squares, r, c, rows, cols){
+//    var thissquare = squares[r][c];
+//    //check self for Zero status
+//    if(thissquare.bombLoc == 0){
+//        for(var i=r; i<rows; i++){
+//            for(var j=c; j<cols; j++){
+//                //check all those around it for either, zero, or non-zero
+//                if(squares[i][j].bombLoc == 0){
+//                    $("[data-row='" + i + "'] , [data-col='" + j + "']").trigger("click");//we are zero, so clear it as if it was clicked
+//                    //traverseZeros(squares, i, j, rows, cols);//go on
+//                }
+//                else{
+//                    $("[data-row='" + i + "'] , [data-col='" + j + "']").trigger("click");
+//                }
+//            }
+//        }
+//    }
+//}
 ////
 
