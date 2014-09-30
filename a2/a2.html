@@ -1,15 +1,25 @@
 <html><head>
         <title>Jesse Osiecki's Minesweeper</title>
+        <link href="a2.css" rel="stylesheet">
         <script src="http://www.cs.unc.edu/Courses/comp426-f14/jquery-1.11.1.js"></script>
-        <script src="board.js"></script>
         <script src="a2.js"></script>
     </head>
 
     <body>
-        <div id="display"></div>
+        <h1>Jesse Osiecki's Minesweeper</h1>
+        <div id="display">
+            <div>rows<input name="rows" type="text" maxlength="2" id="rows" class="inputs" value=8 /></div>
+            <div>columns<input name="cols" type="text" maxlength="2" id="cols" class="inputs" value=8 /></div>
+            <div>diff 0-100<input name="diff" type="text" maxlength="2" id="diff" class="inputs" value=10 /></div>
+            <div>Score: </div><div class="score"></div>
+        </div>
         <div id="controls">
             <button id="resize">Resize</button>
             <button id="reset">Reset</button>
+        </div>
+        <div id="board_cont">
+            <table class="board" id="board">
+            </table>
         </div>
 
 </body></html>

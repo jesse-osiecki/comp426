@@ -1,0 +1,25 @@
+.board {
+	border-style: solid;
+    background-color: black;
+}
+.board td {
+    cursor:pointer;
+    background-color:slategrey;
+    width:30px; height:30px;
+    border:1px dotted #ccc;
+    text-align:center;
+    font-family:sans-serif; font-size:16px;
+    color:slategrey;
+}
+.board td.clicked {
+    background-color:lightgrey;
+    color:green;
+}
+.board td.bomb {
+    background-color:lightgrey;
+    color:red;
+}
+.board td.marked {
+    background-color:grey;
+    color:blue;
+}
