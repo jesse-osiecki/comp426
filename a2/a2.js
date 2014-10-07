@@ -178,6 +178,7 @@ $(document).ready(function () {
     //INIT
     var rows = this.getElementById('rows').value;
     var cols = this.getElementById('cols').value;
+    var bsize = rows * cols;
     var diff = this.getElementById('diff').value;
     var setup = function(){
         window.score = 0;
@@ -235,6 +236,12 @@ $(document).ready(function () {
                 }
                 else if( $(this).hasClass("clicked") && ($(this).text() != "") ){
                     traverseQuickClick(board.squares[r][c]);// click on squares adjacent to marked
+                }
+                //HAVE WE WON?
+                if(window.score == (bsize - window.bomb_total)){
+                    //we won
+                    alert("YOU WIN");
+                    window.location.reload();
                 }
             });
             //controller
