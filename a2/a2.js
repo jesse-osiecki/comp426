@@ -11,6 +11,8 @@
 //
 //debug vars
 var bomb_total=0;
+var bombs_marked=0;
+var score = 0;
 //
 var Board = function(){
 }
@@ -30,8 +32,10 @@ Board.prototype.setup = function(r,c, difficulty){
         this.squares[i] = new Array();
         for(var j=0; j< this.MaxC; j++){
             var ran = Math.ceil(Math.random() + this.diff); //diff is a float where 0 <= diff < 1
-            bomb_total += ran;
-            this.squares[i][j] = new Board_Unit(ran); //initialize a new Board_unit in each part of the board array, with 0-1 random bomb
+            window.bomb_total += ran;
+            var JQOBJECT = $(document).find("[data-row='" + i + "'][data-col='" + j + "']");
+            JQOBJECT.val( i+j);
+            this.squares[i][j] = new Board_Unit(ran, JQOBJECT); //initialize a new Board_unit in each part of the board array, with 0-1 random bomb
         }
     }
     console.debug("Bombs: " + bomb_total);
@@ -69,17 +73,55 @@ Board.prototype.__populateAll = function(){
     for(var i=0; i< this.MaxR; i++){
         for(var j=0; j<this.MaxC; j++){
             //assign neighbors
+            console.debug("__populateAll i=" + i + "j=" + j);
             if(i+1 < this.MaxR && j+1 < this.MaxC){
-                this.squares[i][j].populateNeighbor( this.squares[i+1][j+1] );//Bottom right
+                var neighbor = this.squares[i+1][j+1];
+                this.squares[i][j].populateNeighbor(neighbor); 
+                console.debug("    populateNeighbor i=" + i+1 + "j=" + j+1);
+                console.debug("        isbomb =" + neighbor.isMine);
             }
-            if(i+1 < this.MaxR) this.squares[i][j].populateNeighbor( this.squares[i+1][j] );//Bottom
-            if(j-1 > 0 && i+1 < this.MaxR) this.squares[i][j].populateNeighbor( this.squares[i+1][j-1] );//Bottom left
-            if( i > 0 && j-1 > 0 && i < this.MaxR && j-1 < this.MaxC) this.squares[i][j].populateNeighbor( this.squares[i][j-1] );//left
-
-            if( i-1 > 0 && j-1 > 0) this.squares[i][j].populateNeighbor( this.squares[i-1][j-1] );//up left
-            if( i-1 > 0) this.squares[i][j].populateNeighbor( this.squares[i-1][j] );//up
-            if( i-1 > 0 && j+1 < this.MaxC) this.squares[i][j].populateNeighbor( this.squares[i-1][j+1] );//up right
-            if( j+1 < this.MaxC) this.squares[i][j].populateNeighbor( this.squares[i][j+1] );//right
+            if(i+1 < this.MaxR){
+                var neighbor = this.squares[i+1][j] ;
+                this.squares[i][j].populateNeighbor(neighbor); 
+                console.debug("    populateNeighbor i=" + i+1 + "j=" + j);
+                console.debug("        isbomb =" + neighbor.isMine);
+            }
+            if(j-1 >= 0 && i+1 < this.MaxR){
+                var neighbor = this.squares[i+1][j-1] ;
+                this.squares[i][j].populateNeighbor(neighbor); 
+                console.debug("    populateNeighbor i=" + i+1 + "j=" + j+"-1");
+                console.debug("        isbomb =" + neighbor.isMine);
+            }
+            if( i >= 0 && j-1 >= 0 && i < this.MaxR && j-1 < this.MaxC){
+                var neighbor = this.squares[i][j-1] ;
+                this.squares[i][j].populateNeighbor(neighbor); 
+                console.debug("    populateNeighbor i=" + i + "j=" + j+"-1");
+                console.debug("        isbomb =" + neighbor.isMine);
+            }
+            if( i-1 >= 0 && j-1 >= 0){
+                var neighbor = this.squares[i-1][j-1] ;
+                this.squares[i][j].populateNeighbor(neighbor); 
+                console.debug("    populateNeighbor i=" + i+"-1" + "j=" + j+"-1");
+                console.debug("        isbomb =" + neighbor.isMine);
+            }
+            if( i-1 >= 0){
+                var neighbor = this.squares[i-1][j] ;
+                this.squares[i][j].populateNeighbor(neighbor); 
+                console.debug("    populateNeighbor i=" + i+"-1" + "j=" + j);
+                console.debug("        isbomb =" + neighbor.isMine);
+            }
+            if( i-1 >= 0 && j+1 < this.MaxC){
+                var neighbor = this.squares[i-1][j+1] ;
+                this.squares[i][j].populateNeighbor(neighbor); 
+                console.debug("    populateNeighbor i=" + i+"-1" + "j=" + j+1);
+                console.debug("        isbomb =" + neighbor.isMine);
+            }
+            if( j+1 < this.MaxC){
+                var neighbor = this.squares[i][j+1] ;
+                this.squares[i][j].populateNeighbor(neighbor); 
+                console.debug("    populateNeighbor i=" + i + "j=" + j+1);
+                console.debug("        isbomb =" + neighbor.isMine);
+            }
         }
     }
 
@@ -87,10 +129,13 @@ Board.prototype.__populateAll = function(){
 
 
 ////////////////////////////////
-var Board_Unit = function(isMine){
+var Board_Unit = function(isMine, JQOBJECT){
     this.isMine = isMine;
     this.bombLoc = 0;
     this.adjacent_array = [];
+    this.JQOBJECT = JQOBJECT;
+    this.hasbeenclicked = 0;
+    this.hasbeenmarked = 0;
 }
 
 /*
@@ -131,12 +176,11 @@ var board = new Board();
 ///View
 $(document).ready(function () {
     //INIT
-    var score = 0;
     var rows = this.getElementById('rows').value;
     var cols = this.getElementById('cols').value;
     var diff = this.getElementById('diff').value;
     var setup = function(){
-        score = 0;
+        window.score = 0;
         rows = document.getElementById('rows').value;
         cols = document.getElementById('cols').value;
         diff = document.getElementById('diff').value;
@@ -149,17 +193,29 @@ $(document).ready(function () {
             newgrid.setAttribute("class", "board");
             parentnode.replaceChild(newgrid, element);
             drawboard(rows, cols);
-            $("td").click(function(e) {
+            $("td").click(function(e) {                
+
+                $(".bombsleft").text(window.bomb_total - window.bombs_marked);
+                console.debug("bombs: " + window.bomb_total + "-" + window.bombs_marked);
+                var r = $(this).attr("data-row");
+                var c = $(this).attr("data-col");
                 if (e.shiftKey) {
-                    $(this).addClass("marked");
-                    var r = $(this).attr("data-row");
-                    var c = $(this).attr("data-col");
-                    $(this).text("M");
+                    if( ! $(this).hasClass("marked") ){
+                        board.squares[r][c].hasbeenmarked = 1;
+                        $(this).addClass("marked");
+                        $(this).text("M");
+                        bombs_marked +=1;
+                    }
+                    else{
+                        board.squares[r][c].hasbeenmarked = 0;
+                        $(this).removeClass("marked");
+                        $(this).text("");
+                        bombs_marked -=1;
+                    }
                 }
-                else if( ! $(this).hasClass("marked")){
+                else if( ! $(this).hasClass("marked") && ! $(this).hasClass("clicked") ){
                     $(this).addClass("clicked"); 
-                    var r = $(this).attr("data-row");
-                    var c = $(this).attr("data-col");
+                    board.squares[r][c].hasbeenclicked = 1;
                     if(board.squares[r][c].isMine){
                         $(this).text("X");
                         $(this).addClass("bomb");
@@ -167,20 +223,25 @@ $(document).ready(function () {
                         window.location.reload();
                     }
                     else if(board.squares[r][c].bombLoc == 0){
-                        score +=1;
-                        $(".score").text(score);
-                        traverseZeros(board.squares, r, c, rows, cols);   
+                        window.score +=1;
+                        $(".score").text(window.score);
+                        traverseZeros(board.squares[r][c]); //just pass the correct board_unit   
                     }
                     else{
-                        score +=1;
-                        $(".score").text(score);
+                        window.score +=1;
+                        $(".score").text(window.score);
                         $(this).text(board.squares[r][c].bombLoc);
                     }
+                }
+                else if( $(this).hasClass("clicked") && ($(this).text() != "") ){
+                    traverseQuickClick(board.squares[r][c]);// click on squares adjacent to marked
                 }
             });
             //controller
             board = new Board();
             board.setup(rows,cols, diff); //tell the model to build
+            $(".bombsleft").text(window.bomb_total - window.bombs_marked);
+            console.debug("bombs: " + window.bomb_total + "-" + window.bombs_marked);
         }
         else{
             alert("Knock that shit off");
@@ -200,6 +261,9 @@ $(document).ready(function () {
 function drawboard(r, c){
     var board = document.getElementById("board");
 
+    $(".bombsleft").text(window.bomb_total - window.bombs_marked);
+    console.debug("bombs: " + window.bomb_total + "-" + window.bombs_marked);
+    $(".score").text(window.score);
     for(var i = 0; i<r; i++){
         var tr = board.appendChild(document.createElement('tr'));
 
@@ -213,22 +277,37 @@ function drawboard(r, c){
 }
 //
 //
-//This funct blew up recursion in jscript. Not sure why but I am tired and the deadline is almost here. So everything will be less pretty.
-//
-//
-function traverseZeros(squares, r, c, rows, cols){
-    var thissquare = squares[r][c];
+function traverseQuickClick(thissquare){
+    //check self for Zero status
+    if(thissquare.bombLoc != 0){
+        var numJQmarked = 0;
+        for(var i=0; i<thissquare.adjacent_array.length; i++){
+            if(thissquare.adjacent_array[i].hasbeenmarked > 0){
+                numJQmarked += 1;// we need to make sure that the # marked == bombLoc
+            }
+        }
+        if( numJQmarked == thissquare.bombLoc) { //if num marked == num bombs nearby then we can continue
+            for(var i=0; i<thissquare.adjacent_array.length; i++){
+                if(thissquare.adjacent_array[i].hasbeenclicked == 0 && thissquare.adjacent_array[i].hasbeenmarked == 0){
+                    thissquare.adjacent_array[i].JQOBJECT.trigger("click");
+                }
+            }
+        }
+    }
+}
+function traverseZeros(thissquare){
     //check self for Zero status
     if(thissquare.bombLoc == 0){
-        for(var i=r; i<rows; i++){
-            for(var j=c; j<cols; j++){
+        for(var i=0; i<thissquare.adjacent_array.length; i++){
+            if(thissquare.adjacent_array[i].hasbeenclicked == 0){
                 //check all those around it for either, zero, or non-zero
-                if(squares[i][j].bombLoc == 0){
-                    $("[data-row='" + i + "'] , [data-col='" + j + "']").trigger("click");//we are zero, so clear it as if it was clicked
-                    //traverseZeros(squares, i, j, rows, cols);//go on
+                if(thissquare.adjacent_array[i].bombLoc == 0){
+                    thissquare.adjacent_array[i].JQOBJECT.trigger("click");//we are zero, so clear it as if it was clicked
+                    traverseZeros(thissquare.adjacent_array[i]);
                 }
                 else{
-                    $("[data-row='" + i + "'] , [data-col='" + j + "']").trigger("click");
+                ///there is no case of an adjacent bomb
+                    thissquare.adjacent_array[i].JQOBJECT.trigger("click");//we are not a bomb, so clear it as if it was clicked
                 }
             }
         }
