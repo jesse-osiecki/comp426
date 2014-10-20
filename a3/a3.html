@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Yardsale.com</title>
+        <link href="a3.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Yardsale.com</h1>
+        <div id="searcharea">
+            <input name="searchbar" type="text" maxlength="100" class="inputs" value="" />
+            <button name="search">Search</button>
+        </div>
+
+        <div id="projectmembers">
+            <h1>Project Members</h1>
+            Filip Wodnicki, Jesse Osiecki, and Sujay Sahoo
+        </div>
+        <div id="projectdescript">
+            <h1>Project description</h1>
+                <h2>Concept</h2>
+                    <p>
+                    We want to make it easier to sell your stuff online. We propose to create site that will empower clients to make informed choices about where to sell used electronic equipment, weighing criteria such as sale price as well ease and simplicity.
+                    </p>
+                    <p>
+                    The homepage of our site will primarily revolve around a central search box, where the user will enter the product to sell (step 1). The search box will be auto populated with suggestions (to match existing list of specifications).
+                    </p>
+                    Once a product is selected, a new page will be generated where few further details will be requested (step 2). This information will be used to generate the next page of recommedations of websites or ways to sell your stuff (step 3). This will list sites such as Amazon Used, Ebay, Chegg, Craigslist. The user will be provided an estimate of the market value of his/her item for sale, an ease of use grade, as well as a <q>Sell here</q> button. The <q>sell here</q> button will then redirect (step 4) to the user to the appropriate website (in new tab) to sell his/her item.
+                    </p>
+
+                <h2>Implementation</h2>
+                    <h3>Structure</h3>
+                        Simple web app.
+                        Three basic pages for the process of creating recommendations.
+                            Step 1: search
+                            Step 2: more details
+                            Step 3: list of recommendations to choose from.
+                    <h3>Data sent from back-end to client</h3>
+                        Product data to populate search box.
+                        <q>Market value</q> data from Amazon, eBay, etc (algorithm using data gathered using those site’s APIs or, worst-case, simple web scraping).
+                    <h2>Process</h2>
+                        <h3>Expected functionality</h3>
+                            Ability to find item (populate search list with recommendations)
+                            Ability to generate <q>market value</q> of product (using an algorithm from sale prices on Amazon, 
+                        <h3>Ambitious functionality</h3>
+                            Detailed recommendations. Price graph of item values over time (would probably require lots of data, long-time, many queries)
+                            Monetizing the site, starting business.
+                            Pay for click-through
+                            Ads
+                            Market, Google AdWords
+        </div>
+    </body>
+</html>
