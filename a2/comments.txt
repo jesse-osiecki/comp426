@@ -1,0 +1,23 @@
+******************************************************************************
+* COMP 426 A2 (Minesweeper)
+* Grader Feedback
+* Graded By: Aaron Smith
+* Username: osiecki
+* Possible Points: 20
+* Actual Points: 20
+******************************************************************************
+
+
+Functionality (10 Possible Points):
+	(-1) You are not supposed to be able to flag squares that are already
+		opened.
+
+Aesthetics (5 Possible Points):
+	(-0) The only comment I have is that sometimes when clicking, other squares
+		become highlighted. There is a CSS rule to prevent this.
+
+Code (5 Possible Points):
+	Great comments!
+
+Extra Credit:
+	(+1) Score
