@@ -1,0 +1,28 @@
+html {
+    background-color:  rgb(255,255,255); 
+}
+
+h1{ 
+    text-align: center;
+    border-style: solid;
+}
+
+#searcharea {
+    text-align: center;
+}
+
+#projectmembers{
+    text-align: center;
+}
+
+h2{
+    text-emphasis: 90%;
+}
+
+p{
+    text-align: justify;
+}
+
+q{
+    text-align: justify;
+}
