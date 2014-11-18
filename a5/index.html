@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>The Friendly Everyday Email Robot</title>
+        <link href="feer.css" rel="stylesheet">
+        <script src="http://www.cs.unc.edu/Courses/comp426-f14/jquery-1.11.1.js"></script>
+        <script src="feer.js"></script>
+    </head>
+
+    <body>
+        <h1>The Friendly Everyday Email Robot</h1>
+        <div id="textboxes">
+            When to Schedule this email?
+            <form>
+                <input type="date" name="date" size=50 id="date-0">
+            </form>
+            FROM: 
+            <form>
+                <input name="from_field" type="email" maxlength="100" class="inputs" value="" />
+            </form>
+            TO:
+            <form>
+                <input name="to_field" type="email" maxlength="100" class="inputs" value="" />
+            </form>
+            CC:
+            <form>
+                <input name="cc_field" type="email" maxlength="100" class="inputs" value="" />
+            </form>
+            BODY:
+            <form>
+                <input name="body_field" type="text" size="100" maxlength="10000" class="inputs" value="" />
+            </form>
+        </div>
+        <button name="send_button">Send</button>
+
+        <p>
+            <a href="description.html">Project Description</a> 
+        </p>
+    </body>
+</html>
