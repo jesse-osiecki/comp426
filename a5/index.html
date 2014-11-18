@@ -1,39 +1,63 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
     <head>
         <title>The Friendly Everyday Email Robot</title>
+        <link rel="stylesheet" href="dist/css/bootstrap.css">
+        <link rel="stylesheet" href="dist/css/bootstrap-theme.css">
         <link href="feer.css" rel="stylesheet">
         <script src="http://www.cs.unc.edu/Courses/comp426-f14/jquery-1.11.1.js"></script>
+        <script src="dist/js/bootstrap.js"></script>
         <script src="feer.js"></script>
     </head>
 
     <body>
-        <h1>The Friendly Everyday Email Robot</h1>
-        <div id="textboxes">
-            When to Schedule this email?
-            <form>
-                <input type="date" name="date" size=50 id="date-0">
-            </form>
-            FROM: 
-            <form>
-                <input name="from_field" type="email" maxlength="100" class="inputs" value="" />
-            </form>
-            TO:
-            <form>
-                <input name="to_field" type="email" maxlength="100" class="inputs" value="" />
-            </form>
-            CC:
-            <form>
-                <input name="cc_field" type="email" maxlength="100" class="inputs" value="" />
-            </form>
-            BODY:
-            <form>
-                <input name="body_field" type="text" size="100" maxlength="10000" class="inputs" value="" />
+        <div class="bg"></div>
+        <div class="jumbotron">
+            <h1>The Friendly Everyday Email Robot</h1>
+            <p class="lead">+ Jesse J. Osiecki</p>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="description.html">Project Description</a></li>
+        </ul>
+
+        <div id="textboxes" class=row>
+            <form role="form" class="">
+                <div class="col-xs-4">
+                    <label for="date-0">When?</label>
+                    <input type="date" name="date" class="form-control" id="date-0">
+                </div>
+                <div class="col-xs-4">
+                    <label>From:</label> 
+                    <input name="from_field" type="email" class="form-control" placeholder="Enter email"/>
+                </div>
+                <div class=col-xs-4>
+                    <label>To:</label>
+                    <input name="to_field" type="email" class="form-control" placeholder="Enter email"/>
+                </div>
+                <div class=col-xs-4>
+                    <label>CC:</label>
+                    <input name="cc_field" type="email" class="form-control" placeholder="Enter email"/>
+                </div>
             </form>
         </div>
-        <button name="send_button">Send</button>
-
+        <div>
+            <form role="form" class="form-inline">
+                <div class=form-group>
+                    <label class="col-xs-4 no-padding-right" for="body">Message:</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control col-lg-10" id="body" placeholder="Enter Message"  name=""></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
         <p>
-            <a href="description.html">Project Description</a> 
+            <div>
+                <button name="send_button" type="submit" class="btn btn-primary btn-lg">Queue Send</button>
+            </div>
         </p>
+
     </body>
 </html>
