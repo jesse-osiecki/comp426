@@ -13,13 +13,24 @@ $(document).ready(function () {
     var jumboHeight = $('.jumbotron').outerHeight();
     function parallax(){
         var scrolled = $(window).scrollTop();
-        $('.bg').css('height', (jumboHeight-scrolled) + 'px');
+        $('.bg').css('height', ( (scrolled/jumboHeight) + 100) + '%');
     }
-
-
     $(window).scroll(function(e){
         parallax();
     });
+    //////////////////////
+    //What to do when the user hits submit
+    $('#submit').click(function( event ) {
+        event.preventDefault();
+        //Post to the test.php page and get content which has been returned in json format (<?php echo json_encode(array("name"=>"John","time"=>"2pm")); ?>).
+        var posting = $.post( "submit.php", { func: "getAttr" }, function() {
+            //console.log( data.name ); // John
+            console.log( then ); // time to send
+        }, "json");
+        alert("Submit");
+    });
+
+    //UPDATE the date
     var update_date = function() {
         //DATE CHANGED
         var input_val = $( this ).val();
@@ -28,7 +39,7 @@ $(document).ready(function () {
             window.then = new Date(timestamp);
             //alert(window.then);
         } else {
-            alert("Your date is formatted incorrectly")
+            alert("Bad date format");
         }
     }
 
@@ -36,7 +47,7 @@ $(document).ready(function () {
         //EMAIL changed
         var input_val = $(this).val();
         if(!validateEmail(input_val)){
-            alert("Your email is formatted incorrectly");
+            alert("Bad email format");
         }
     }
     $("[type='email']").bind("change", check_email);
