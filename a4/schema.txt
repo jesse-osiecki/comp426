@@ -1,0 +1,64 @@
+SCHEMA:
+
+CREATE TABLE `airports` (
+  `airport_id` int(11) NOT NULL AUTO_INCREMENT,
+  `airport_code` varchar(3) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  PRIMARY KEY (`airport_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `crew_member` (
+  `crew_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`crew_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `crew_role_per_segment` (
+  `crew_role_per_segment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `flight_segment_id` int(11) DEFAULT NULL,
+  `crew_member_id` int(11) DEFAULT NULL,
+  `role` enum('pilot','copilot','navigator','attendant') DEFAULT NULL,
+  PRIMARY KEY (`crew_role_per_segment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `crew_role_possible` (
+  `crew_role_possible_id` int(11) NOT NULL AUTO_INCREMENT,
+  `crew_member_id` int(11) DEFAULT NULL,
+  `role` enum('pilot','copilot','navigator','attendant') DEFAULT NULL,
+  PRIMARY KEY (`crew_role_possible_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `flight_segment` (
+  `flight_segment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `flight_id` int(11) DEFAULT NULL,
+  `plane_id`int(11) DEFAULT NULL,
+  PRIMARY KEY (`flight_segment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `flights` (
+  `flight_id` int(11) NOT NULL AUTO_INCREMENT,
+  `flight_no` int(11) NOT NULL,
+  `departure_airport_id` int(11) DEFAULT NULL,
+  `arrival_airport_id` int(11) DEFAULT NULL,
+  `date` date NOT NULL,
+  `departure_time` time NOT NULL,
+  `arrival_time` time NOT NULL,
+  PRIMARY KEY (`flight_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `plane_model` (
+  `plane_model_id` int(11) NOT NULL AUTO_INCREMENT,
+  `plane_model_name` varchar(255) NOT NULL,
+  `manufacturer` varchar(255) NOT NULL,
+  PRIMARY KEY (`plane_model_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `planes` (
+  `plane_id` int(11) NOT NULL AUTO_INCREMENT,
+  `registration_number` int(11) NOT NULL,
+  `manufacture_year` date NOT NULL,
+  `model_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`plane_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

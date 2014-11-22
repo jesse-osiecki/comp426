@@ -1,0 +1,49 @@
+A list of crew members (i.e., first and last name) that have landed at DFW in 2014.
+
+FROM crew_member
+SELECT crew_member.first_name, crew_member.last_name 
+INNER JOIN crew_role_possible ON crew_role_possible.crew_member_id = crew_member.crew_id
+INNER JOIN crew_role_per_segment ON crew_role_per_segment.crew_member_id = crew_role_possible.crew_member_id
+INNER JOIN flight_segment ON flight_segment.flight_segment_id = crew_role_per_segment.flight_segment_id
+INNER JOIN flight ON flight.flight_id = flight_segment.flight_id
+INNER JOIN airports ON flight.arrival_airport_id = airports.airport_id
+WHERE (airports.airport_code = 'DFW' AND YEAR(flight.date) = 2014)
+
+The number of flight segments flown by a Boeing 777 in the UnitedStates since 2010.
+
+FROM flights
+SELECT COUNT(flights.flight_id)
+INNER JOIN flight ON flight.flight_id = flight_segment.flight_id
+INNER JOIN plane ON plane.plane_id = flight_segment.plane_id
+INNER JOIN plane_model ON plane_model.plane_model_id = plane.model_id
+INNER JOIN airports ON airports.airport_id = flights.arrival_airport_id
+WHERE (plane_model.manufacturer = 'Boeing' AND plane_model.plane_model_name = '777' AND airports.country = 'United States' AND YEAR(flight.date) >= 2010); 
+
+A list of all crew members that have flown an Airbus A-380 more than 3 times as its pilot or co-pilot.
+
+FROM crew_member
+SELECT crew_member.first_name, crew_member.last_name
+WHERE COUNT(SELECT flight_segment.flight_segment_id FROM flight_segment INNER JOIN flights ON flight.flight_id = flight_segment.flight_id)
+INNER JOIN planes ON planes.plane_id = flight_segment.plane_id
+INNER JOIN plane_model ON plane_model.model_id = planes.plane_model_id
+WHERE (plane_model.manufacturer = 'Airbus' AND plane_model.name = 'A-380' AND (crew_role_per_segment.role = 'Pilot' OR crew_role_per_segment.role = 'Co-Pilot') 
+
+The total amount of time that a crew member identified by the crew member ID 27 has spent flying as either a pilot or co-pilot in October 2014.
+
+FROM flights
+SELECT SUM
+(SELECT TIMEDIFF (flights.arrival_time, flights.departure_time)
+INNER JOIN flight_segment ON flight_segment.flight_id = flights.flight_id
+INNER JOIN crew_role_per_segment.flight_segment_id ON crew_role_per_segment.flight_segment_id = flight_segment.flight_segment_id
+INNER JOIN crew_member.crew_id ON crew_member.crew_id = crew_role_per_segment.crew_member_id
+WHERE (crew_member.crew_id = 27 AND (crew_role_per_segment.role = 'Pilot' OR crew_role_per_segment.role = 'Co-Pilot'))
+
+
+A list of crew members that have been an attendant for any segment of flight number 50.
+
+FROM crew_member
+SELECT crew_member.first_name, crew_member.last_name
+WHERE COUNT(SELECT flight_segment.flight_segment_id FROM flight_segment INNER JOIN flights ON flight.flight_id = flight_segment.flight_id)
+INNER JOIN crew_role_per_segment.flight_segment_id ON crew_role_per_segment.flight_segment_id = flight_segment.flight_segment_id
+INNER JOIN crew_member.crew_id ON crew_member.crew_id = crew_role_per_segment.crew_member_id
+WHERE (crew_role_per_segment.role = 'Attendant') 

@@ -115,7 +115,7 @@ UNLOCK TABLES;
 
 --
 -- Table structure for table `flight_segment`
---
+--t
 
 DROP TABLE IF EXISTS `flight_segment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -123,6 +123,7 @@ DROP TABLE IF EXISTS `flight_segment`;
 CREATE TABLE `flight_segment` (
   `flight_segment_id` int(11) NOT NULL AUTO_INCREMENT,
   `flight_id` int(11) DEFAULT NULL,
+  `plane_id`int(11) DEFAULT NULL,
   PRIMARY KEY (`flight_segment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -199,8 +200,7 @@ CREATE TABLE `planes` (
   `plane_id` int(11) NOT NULL AUTO_INCREMENT,
   `registration_number` int(11) NOT NULL,
   `manufacture_year` date NOT NULL,
-  `manufacturer` varchar(255) DEFAULT NULL,
-  `model` varchar(255) DEFAULT NULL,
+  `model_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`plane_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
