@@ -1,6 +1,6 @@
 <?php
 include_once 'auth-class.php';
-$admin = new authclass();
+$admin = new userauth();
 $admin->_authenticate();
 ?>
 <!DOCTYPE html>
