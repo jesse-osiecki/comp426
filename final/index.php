@@ -1,5 +1,5 @@
 <?php
-include_once 'admin-class.php';
+include_once 'auth-class.php';
 $admin = new authclass();
 $admin->_authenticate();
 ?>
