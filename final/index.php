@@ -1,7 +1,7 @@
 <?php
 include_once 'auth-class.php';
-$admin = new userauth();
-$admin->_authenticate();
+$user = new userauth();
+$user->_authenticate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@ $admin->_authenticate();
                     <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
                 </ul>
                 <h1>The Friendly Everyday Email Robot</h1>
-                <p class="lead">Welcome <?php echo userauth->get_nicename($_SESSION['user_login']); ?> </p>
+                <p class="lead">Welcome <?php echo $user->get_nicename($_SESSION['user_login']); ?> </p>
                 <input type="button" onclick="javascript:window.location.href='logout.php'" value="logout" class="btn btn-primary btn-sm"/>
             </div>
             <!-- Start main html
