@@ -13,6 +13,13 @@
     <body>
         <div class="bg"></div>
         <div class=jumbotron>
+            <div class="row">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#">Login</a></li>
+                    <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
+                </ul>
+                <h1>The Friendly Everyday Email Robot</h1>
+            </div>
             <form action="login-action.php" method="post" role="form" class="row">
                 <fieldset>
                     <div class="col-xs-2">
