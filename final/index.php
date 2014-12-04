@@ -19,13 +19,15 @@ $admin->_authenticate();
     <body>
         <div class="bg"></div>
         <div class=jumbotron>
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
-            </ul>
-            <h1>The Friendly Everyday Email Robot</h1>
-            <p class="lead">Welcome Username: <?php echo $_SESSION['user_login']; ?> </p>
-            <input type="button" onclick="javascript:window.location.href='logout.php'" value="logout" class="btn btn-primary btn-sm"/>
+            <div id="textboxes" class="row">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
+                </ul>
+                <h1>The Friendly Everyday Email Robot</h1>
+                <p class="lead">Welcome <?php echo userauth->get_nicename($_SESSION['user_login']); ?> </p>
+                <input type="button" onclick="javascript:window.location.href='logout.php'" value="logout" class="btn btn-primary btn-sm"/>
+            </div>
             <!-- Start main html
             -->
             <div id="textboxes" class="row">
