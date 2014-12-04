@@ -1,6 +1,8 @@
 <?php
 #thanks http://www.intechgrity.com/login-logout-and-administrate-using-php-session-cookie-mysql-version-2-with-remember-me-option/# 
 #
+include_once 'db.php';
+
 class userauth {
  
     /**
