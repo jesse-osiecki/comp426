@@ -1,6 +1,6 @@
 <?php
 include_once 'admin-class.php';
-$admin = new itg_admin();
+$admin = new authclass();
 $admin->_authenticate();
 ?>
 <!DOCTYPE html>
