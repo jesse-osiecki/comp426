@@ -43,6 +43,7 @@
                     <input type="submit" value="Submit" class="btn btn-primary btn-xs"/>
                 </div>
             </form>
+            <h2> Create an Account: </h2>
             <form action="create-user-action.php" method="post" role="form" class="row">
                 <fieldset>
                     <div class="col-xs-2">

@@ -22,6 +22,10 @@ class userauth {
         //decode the url
         array_walk_recursive($this->get, array($this, 'urldecode'));
     }
+    
+    private function _delete_db_user($username, $password){
+        #delete from user where username='tim';
+    }
 
     private function _create_db_user_pass($username, $nicename, $email, $password) {
         global $db;
@@ -53,8 +57,9 @@ class userauth {
         $email = $this->post['email'];
         $password = $this->post['password'];
         $query = $this->_create_db_user_pass($username, $nicename, $email, $password);
-        echo("User Created".$query);
-        
+
+        //Pass on the work to login, if it has bad credentials, it can handle it
+        return $this->_login_action();
     }
     private function _check_db_user_pass($username, $password) {
         global $db;
@@ -134,23 +139,11 @@ class userauth {
     private function stripslash_gpc(&$value) {
         $value = stripslashes($value);
     }
- 
-    /**
-     * htmlspecialcarfy
-     * Encodes string's special html characters
-     * @access protected
-     * @param string $value
-     */
+
     private function htmlspecialcarfy(&$value) {
         $value = htmlspecialchars($value);
     }
- 
-    /**
-     * URL Decode
-     * Decodes a URL Encoded string
-     * @access protected
-     * @param string $value
-     */
+
     protected function urldecode(&$value) {
         $value = urldecode($value);
     }
