@@ -31,7 +31,7 @@ class userauth {
         $email = $db->escape($email);
         $password = $db->escape($password);
         //insert into db
-        $query = $db->query("INSERT INTO user (username, nicename, email, password) VALUES ($username, $nicename, $email, SHA1($password))");
+        $query = $db->query("INSERT INTO user (username, nicename, email, password) VALUES ('$username', '$nicename', '$email', 'SHA1($password)')");
         //make sure that the entry made it into the sql
         return $query;
     }
@@ -52,8 +52,9 @@ class userauth {
         $nicename = $this->post['nicename'];
         $email = $this->post['email'];
         $password = $this->post['password'];
-        if($this->_create_db_user_pass($username, $nicename, $email, $password)){
-            echo("User Created");
+        $query = $this->_create_db_user_pass($username, $nicename, $email, $password)
+        if($query){
+            echo("User Created".$query);
         }
     }
     private function _check_db_user_pass($username, $password) {
