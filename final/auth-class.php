@@ -52,7 +52,7 @@ class userauth {
         $nicename = $this->post['nicename'];
         $email = $this->post['email'];
         $password = $this->post['password'];
-        $query = $this->_create_db_user_pass($username, $nicename, $email, $password)
+        $query = $this->_create_db_user_pass($username, $nicename, $email, $password);
         echo("User Created".$query);
         
     }

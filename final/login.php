@@ -62,7 +62,7 @@
                         <input type="password" name="password" id="password" value="" class="form-control" />
                     </div>
                     <div class="col-xs-2">
-                        <label for="trickquestion">What is my teacher's last name?: </label>
+                        <label for="trickquestion">Teacher's last name?: </label>
                         <!-- Slow down the Spam bots, answer is Patel -->
                         <input type="text" name="trickquestion" id="trickquestion" value="" class="form-control" />
                     </div>
