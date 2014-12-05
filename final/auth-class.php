@@ -31,7 +31,7 @@ class userauth {
         $email = $db->real_escape_string($email);
         $password = $db->real_escape_string($password);
         //insert into db
-        $query = $db->query("INSERT INTO `user` (`username`, `nicename`, `email`, `password`) VALUES ($username, $nicename, $email, SHA1($password))");
+        $query = $db->query("INSERT INTO user (username, nicename, email, password) VALUES ($username, $nicename, $email, SHA1($password))");
         //make sure that the entry made it into the sql
         return $query;
     }
