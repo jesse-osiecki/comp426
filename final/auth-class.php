@@ -26,10 +26,10 @@ class userauth {
     private function _create_db_user_pass($username, $nicename, $email, $password) {
         global $db;
         //sanitize inputs
-        $username = $db->real_escape_string($username);
-        $nicename = $db->real_escape_string($nicename);
-        $email = $db->real_escape_string($email);
-        $password = $db->real_escape_string($password);
+        $username = $db->escape($username);
+        $nicename = $db->escape($nicename);
+        $email = $db->escape($email);
+        $password = $db->escape($password);
         //insert into db
         $query = $db->query("INSERT INTO user (username, nicename, email, password) VALUES ($username, $nicename, $email, SHA1($password))");
         //make sure that the entry made it into the sql
