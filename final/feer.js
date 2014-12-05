@@ -8,16 +8,6 @@ $(document).ready(function () {
     var change_date = jQuery.Event( "change" );
     $("#date-0").attr("value", then);
 
-    //update jumbotron
-    //http://www.bootply.com/103783
-    var jumboHeight = $('.jumbotron').outerHeight();
-    function parallax(){
-        var scrolled = $(window).scrollTop();
-        $('.bg').css('height', ( (scrolled/jumboHeight) + 100) + '%');
-    }
-    $(window).scroll(function(e){
-        parallax();
-    });
     //////////////////////
     //What to do when the user hits submit
     $('#submit').click(function( event ) {

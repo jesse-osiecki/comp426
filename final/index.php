@@ -1,7 +1,7 @@
 <?php
 include_once 'auth-class.php';
-$user = new userauth();
-$user->_authenticate();
+$userauth = new userauth();
+$userauth->_authenticate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +13,9 @@ $user->_authenticate();
         <link href="feer.css" rel="stylesheet">
         <script src="js/jquery-1.11.1.js"></script>
         <script src="dist/js/bootstrap.js"></script>
+        <script src="jumbotron.js"></script>
+        <!-- THIS SCRIPT IS SPECIFIC TO THE MAIN PAGE
+        -->
         <script src="feer.js"></script>
     </head>
 
@@ -25,7 +28,7 @@ $user->_authenticate();
                     <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
                 </ul>
                 <h1>The Friendly Everyday Email Robot</h1>
-                <p class="lead">Welcome <?php echo $user->get_nicename($_SESSION['user_login']); ?> </p>
+                <p class="lead">Welcome <?php echo $userauth->get_nicename($_SESSION['user_login']); ?> </p>
                 <input type="button" onclick="javascript:window.location.href='logout.php'" value="logout" class="btn btn-primary btn-sm"/>
             </div>
             <!-- Start main html
@@ -61,7 +64,7 @@ $user->_authenticate();
                 </form>
             </div>
             <div class="row main">
-                <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-lg">Send to Queue</button>
+                <button id="submit" name="send_button" type="submit" onclick="javascript:window.location.href='submit-email.php'" class="btn btn-primary btn-lg">Send to Queue</button>
             </div>
         </div>
     </body>

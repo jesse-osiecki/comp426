@@ -1,34 +1,12 @@
 <?php
-#thanks http://www.intechgrity.com/login-logout-and-administrate-using-php-session-cookie-mysql-version-2-with-remember-me-option/# 
-#
 include_once 'db.php';
 
 class userauth {
- 
-    /**
-     * Holds the script directory absolute path
-     * @staticvar
-     */
-    static $abs_path;
- 
-    /**
-     * Store the sanitized and slash escaped value of post variables
-     * @var array
-     */
     var $post = array();
- 
-    /**
-     * Stores the sanitized and decoded value of get variables
-     * @var array
-     */
     var $get = array();
  
     public function __construct() {
         session_start();
-    
-        //store the absolute script directory
-        //note that this is not the admin directory
-        self::$abs_path = dirname(dirname(__FILE__));
     
         //initialize the post variable
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -45,7 +23,39 @@ class userauth {
         array_walk_recursive($this->get, array($this, 'urldecode'));
     }
 
+    private function _create_db_user_pass($username, $nicename, $email, $password) {
+        global $db;
+        //sanitize inputs
+        $username = $db->real_escape_string($username);
+        $nicename = $db->real_escape_string($nicename);
+        $email = $db->real_escape_string($email);
+        $password = $db->real_escape_string($password);
+        //insert into db
+        $query = $db->query("INSERT INTO `user` (`username`, `nicename`, `email`, `password`) VALUES ($username, $nicename, $email, SHA1($password))");
+        //make sure that the entry made it into the sql
+        return $query;
+    }
 
+    public function _create_user_action() {
+    
+        //insufficient data provided
+        if(!isset($this->post['username']) || $this->post['username'] == '' 
+            || !isset($this->post['nicename']) || $this->post['nicename'] == ''
+            || !isset($this->post['email']) || $this->post['email'] == ''
+            || !isset($this->post['password']) || $this->post['password'] == ''
+            || !isset($this->post['trickquestion']) || $this->post['trickquestion'] != 'Patel'
+        ) {
+            header ("location: login.php");
+        }
+        //otherwise create the user
+        $username = $this->post['username'];
+        $nicename = $this->post['nicename'];
+        $email = $this->post['email'];
+        $password = $this->post['password'];
+        if(_create_db_user_pass($username, $nicename, $email, $password)){
+            echo("User Created");
+        }
+    }
     private function _check_db_user_pass($username, $password) {
         global $db;
         $user_row = $db->get_row("SELECT * FROM `user` WHERE `username`='" . $db->escape($username) . "'");
@@ -97,8 +107,6 @@ class userauth {
         else {
             header ("location: login.php");
         }
-    
-        die();
     }
 
     public function _authenticate() {
@@ -146,26 +154,21 @@ class userauth {
     protected function urldecode(&$value) {
         $value = urldecode($value);
     }
-    /**
-     * Sample function to return the nicename of currently logged in admin
-     * @global ezSQL_mysql $db
-     * @return string The nice name of the user
-     */
+
     public function get_nicename() {
         $username = $_SESSION['user_login'];
         global $db;
         $info = $db->get_row("SELECT `nicename` FROM `user` WHERE `username` = '" . $db->escape($username) . "'");
         if(is_object($info))
             return $info->nicename;
+        //We are using an email as the user_login
+        $info = $db->get_row("SELECT `nicename` FROM `email` WHERE `username` = '" . $db->escape($username) . "'");
+        if(is_object($info))
+            return $info->nicename;
         else
             return '';
     }
- 
-    /**
-     * Sample function to return the email of currently logged in admin user
-     * @global ezSQL_mysql $db
-     * @return string The email of the user
-     */
+
     public function get_email() {
         $username = $_SESSION['user_login'];
         global $db;
@@ -173,6 +176,6 @@ class userauth {
         if(is_object($info))
             return $info->email;
         else
-            return '';
+            return $_SESSION['user_login']; //we were using an email login
     }
 }
