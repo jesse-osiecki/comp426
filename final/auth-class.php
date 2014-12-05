@@ -53,9 +53,8 @@ class userauth {
         $email = $this->post['email'];
         $password = $this->post['password'];
         $query = $this->_create_db_user_pass($username, $nicename, $email, $password)
-        if($query){
-            echo("User Created".$query);
-        }
+        echo("User Created".$query);
+        
     }
     private function _check_db_user_pass($username, $password) {
         global $db;
