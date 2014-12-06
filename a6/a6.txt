@@ -1,0 +1,17 @@
+        The database has two tables. First namely is "user" for user authentication
+        Table user:
+        +----+----------+-----------------+-------------------------+------------------------------------------+
+        | id | username | nicename        | email                   | password                                 |
+        +----+----------+-----------------+-------------------------+------------------------------------------+
+        |  1 | jesse    | Jesse Osiecki   | jesse.osiecki@gmail.com | e2cc294ef010e239fe4b576d820a277d99fe75b6 |
+        |  2 | tim      | Timothy Osiecki | tosiecki1@gmail.com     | e2cc294ef010e239fe4b576d820a277d99fe75b6 |
+        +----+----------+-----------------+-------------------------+------------------------------------------+
+        Where id is the auto_increment primary key, username is a unique name for the user, nicename is the name we use in display's, email is a unique email address, and password is a sha1 hash of the password (so we aren't storing the real thing).
+
+        Secondly, the primary function of the email robot is emails, so we have a table that keeps track of emails on the queue:
+        +----+-----+-------------------------+-------------------------+----------+---------------+----------------+
+        | id | uid | email_from              | email_to                | email_cc | scheduledtime | messagebody    |
+        +----+-----+-------------------------+-------------------------+----------+---------------+----------------+
+        |  1 |   1 | jesse.osiecki@gmail.com | jesse.osiecki@gmail.com |          |             0 | this is a test |
+        +----+-----+-------------------------+-------------------------+----------+---------------+----------------+
+        Where id is the unique primary autoincrement id for the email, uid is a foreign key that points to the user that created it, email_from is an email address for the from line of the email, email_to is likewise the email on the to line (and where we send it), scheduled time is a Unix timestamp, messagemody is a largetext message that we send in the body of the email.
