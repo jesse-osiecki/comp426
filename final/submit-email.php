@@ -1,6 +1,5 @@
 <?php
-include_once 'auth-class.php';
-include_once 'db.php';
+include_once 'email-class.php';
+$emailclass = new emailclass;
 
-?>
 

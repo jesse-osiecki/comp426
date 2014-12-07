@@ -23,9 +23,9 @@ class userauth {
         array_walk_recursive($this->get, array($this, 'urldecode'));
     }
     
-    private function _delete_db_user($username, $password){
-        #delete from user where username='tim';
-    }
+    //private function _delete_db_user($username, $password){
+    //    #delete from user where username='tim';
+    //}
 
     private function _create_db_user_pass($username, $nicename, $email, $password) {
         global $db;
@@ -123,16 +123,13 @@ class userauth {
                 if($this->_check_db_user_pass($_COOKIE['username'], $_COOKIE['password'])) {
                     $_SESSION['user_login'] = $_COOKIE['username'];
                     header("location: index.php");
-                    die();
                 }
                 else {
                     header("location: login.php");
-                    die();
                 }
             }
             else {
                 header("location: login.php");
-                die();
             }
         }
     }
@@ -162,6 +159,15 @@ class userauth {
             return '';
     }
 
+    public function get_user_id() {
+        $username = $_SESSION['user_login'];
+        global $db;
+        $info = $db->get_row("SELECT `id` FROM `user` WHERE `username` = '" . $db->escape($username) . "'");
+        if(is_object($info))
+            return $info->id;
+        else
+            return -1; //error
+    }
     public function get_email() {
         $username = $_SESSION['user_login'];
         global $db;
