@@ -17,6 +17,7 @@ $userauth->_authenticate();
         <!-- THIS SCRIPT IS SPECIFIC TO THE MAIN PAGE
         -->
         <script src="feer.js"></script>
+        <script src="rest-test.js"></script>
     </head>
 
     <body>
@@ -33,39 +34,48 @@ $userauth->_authenticate();
             </div>
             <!-- Start main html
             -->
-            <div id="textboxes" class="row">
-                <form role="form" class="">
-                    <div class="col-xs-2">
-                        <label>From:</label> 
-                        <input name="from_field" type="email" class="form-control" placeholder="Enter email"/>
-                    </div>
-                    <div class=col-xs-2>
-                        <label>To:</label>
-                        <input name="to_field" type="email" class="form-control" placeholder="Enter email"/>
-                    </div>
-                    <div class=col-xs-2>
-                        <label>CC:</label>
-                        <input name="cc_field" type="email" class="form-control" placeholder="Enter email"/>
-                    </div>
-                    <div class="col-xs-5">
-                        <label for="date-0">When?</label>
-                        <input type="date" name="date" class="form-control" id="date-0">
-                    </div>
-                </form>
-            </div>
-            <div class="row main">
-                <form role="form" class="">
-                    <div class=form-group>
-                        <label class="col-lg-10" for="body">Message:</label>
-                        <div class="col-lg-10">
-                            <textarea class="form-control col-lg-10" id="body" placeholder="Enter Message"  name=""></textarea>
+
+            <div id="restform" class="row">
+                <select id="methodselect" name=method>
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                </select>
+                <form role="form" class="" id="restform">
+                    <div id="params">
+                        <div class="col-xs-2">
+                            <label>From:</label> 
+                            <input name="from" type="email" class="form-control pval" placeholder="Enter email"/>
+                        </div>
+                        <div class=col-xs-2>
+                            <label>To:</label>
+                            <input name="to" type="email" class="form-control pval" placeholder="Enter email"/>
+                        </div>
+                        <div class=col-xs-2>
+                            <label>CC:</label>
+                            <input name="cc" type="email" class="form-control pval" placeholder="Enter email"/>
+                        </div>
+                        <div class="col-xs-5">
+                            <label for="date-0">When?</label>
+                            <input type="date" name="date" class="form-control pval" id="date-0">
+                        </div>
+                        <div class="col-xs-5">
+                            <textarea class="form-control col-lg-10 pval" id="body" placeholder="Enter Message"  name=""></textarea>
                         </div>
                     </div>
                 </form>
             </div>
+
             <div class="row main">
-                <button id="submit" name="send_button" type="submit" onclick="javascript:window.location.href='submit-email.php'" class="btn btn-primary btn-lg">Send to Queue</button>
+                <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-lg">Send to Queue</button>
             </div>
+
+            <div id="results">
+            <div>Return Status: <span id="returnstatus"></span></div>
+            <div>Return Text:
+                <div id="returntext"></div>
+            </div>
+            </div>
+
         </div>
     </body>
 </html>
