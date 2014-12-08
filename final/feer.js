@@ -43,6 +43,15 @@ $(document).ready(function () {
             alert("Bad email format");
         }
     }
+    var ajax_success_handler = function(data, textStatus, jqXHR) {
+        $('#returnstatus').html(jqXHR.status);
+        $('#returntext').html(jqXHR.responseText);
+    };
+
+    var ajax_error_handler = function(jqXHR, textStatus, errorThown) {
+        $('#returnstatus').html(jqXHR.status);
+        $('#returntext').html(jqXHR.responseText);
+    };
     var form_submit_handler = function (e) {
         e.preventDefault();
         $.ajax(url_base + "/email.php",
@@ -54,15 +63,6 @@ $(document).ready(function () {
                 });
     };
 
-    var ajax_success_handler = function(data, textStatus, jqXHR) {
-        $('#returnstatus').html(jqXHR.status);
-        $('#returntext').html(jqXHR.responseText);
-    };
-
-    var ajax_error_handler = function(jqXHR, textStatus, errorThown) {
-        $('#returnstatus').html(jqXHR.status);
-        $('#returntext').html(jqXHR.responseText);
-    };
     //function handler mapping
     $("[type='email']").bind("change", check_email);
     $("[type='date']").bind("change", update_date);

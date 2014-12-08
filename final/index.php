@@ -16,7 +16,7 @@ $userauth->_authenticate();
         <script src="jumbotron.js"></script>
         <!-- THIS SCRIPT IS SPECIFIC TO THE MAIN PAGE
         -->
-        <script src="feer.js"></script>
+        <script src="feer.js" type="application/javascript"></script>
     </head>
 
     <body>
