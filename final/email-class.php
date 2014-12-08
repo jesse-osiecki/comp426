@@ -15,6 +15,12 @@ class emailclass{
         $this->message = $message;
     }
 
+    public function delete(){
+        global $db;
+        $result = $db->query("delete from email where id='" . $db->escape($id) . "'");
+        return $result;
+    }
+
     public function getID() {
         return $this->id;
     }
