@@ -59,7 +59,7 @@ $(document).ready(function () {
                     dataType: "json",
                     data: $(this).serialize(),
                     success: ajax_success_handler,
-                    error: ajax_error_handler,
+                    error: ajax_error_handler
                 });
     };
 
