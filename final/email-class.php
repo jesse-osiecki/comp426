@@ -107,7 +107,7 @@ class emailclass{
             . $scheduled . 
             "', '"
             . $message .
-            "'"
+            "')"
         );
         $db->debug();
         //make sure that the entry made it into the sql    
