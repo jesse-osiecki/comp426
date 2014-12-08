@@ -56,7 +56,7 @@ class emailclass{
         return $this->update();
     }
     public function setTime($time) {
-        $this->time = $time;
+        $this->time = strtotime($time);
         return $this->update();
     }
     public function setBody($body) {
