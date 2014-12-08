@@ -109,7 +109,7 @@ class emailclass{
             . $message .
             "')"
         );
-        $db->debug();
+        //$db->debug();//echo the query result. Pretty cool eh?
         //make sure that the entry made it into the sql    
         if ($query) {
             $id = $db->insert_id;
@@ -123,7 +123,6 @@ class emailclass{
         global $db;
         $authclass = new userauth();
         $id = $db->escape($id);
-        $user = $_SESSION['user_login'];
         $uid = $authclass->get_user_id();
         if($uid != -1){
             $query = $db->get_row("select * from email where id='$id' and uid='$uid'");
