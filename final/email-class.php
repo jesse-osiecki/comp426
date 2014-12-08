@@ -129,7 +129,7 @@ class emailclass{
         if ($query) {
             foreach($query as $next=>$next_row) {
                 if(array_key_exists('id', $next_row)){
-                    $id_array[] = intval($next_row['id']);
+                    $id_array[] = $next_row['id'];
                 }
                 echo(json_encode($id_array));
                 //echo(json_encode($next) . " ||| " . json_encode($next_row));
