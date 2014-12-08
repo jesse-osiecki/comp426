@@ -95,19 +95,22 @@ class emailclass{
         $uid = $authclass->get_user_id();
         $message = $db->escape($message);
         //insert into db
-        echo($uid);
-        echo("\n");
-        echo($email_from);
-        echo("\n");
-        echo($email_to);
-        echo("\n");
-        echo($email_cc);
-        echo("\n");
         echo($scheduled);
         echo("\n");
-        echo($message);
-        echo("\n");
-        $query = $db->query("INSERT INTO email (uid, email_from, email_to, email_cc, scheduledtime, messagebody) VALUES ('$uid', '$email_from', '$email_to', '$email_cc', '$scheduled', '$message'");
+        $query = $db->query("INSERT INTO email (uid, email_from, email_to, email_cc, scheduledtime, messagebody) VALUES ('"
+            . $uid .
+            "', '"
+            . $email_from .
+            "', '"
+            . $email_to .
+            "', '"
+            . $email_cc . 
+            "', '"
+            . $scheduled . 
+            "', '"
+            . $message .
+            "'"
+        );
         //make sure that the entry made it into the sql    
         if ($query) {
             $id = $db->insert_id;
