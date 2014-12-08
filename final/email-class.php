@@ -86,7 +86,6 @@ class emailclass{
     }
     public static function _create_email($email_from, $email_to, $email_cc, $scheduled, $message) {
         global $db;
-        echo("help\n");
         $authclass = new userauth();
         //sanitize inputs
         $email_to = $db->escape($email_to);
@@ -95,6 +94,7 @@ class emailclass{
         $scheduled = strtotime($db->escape($scheduled)); //to unix time stamp
         $uid = $authclass->get_user_id();
         $message = $db->escape($message);
+        echo($scheduled);
         //insert into db
         $query = $db->query("INSERT INTO email (uid, email_from, email_to, email_cc, scheduledtime, messagebody) VALUES ('"
             . $uid .
