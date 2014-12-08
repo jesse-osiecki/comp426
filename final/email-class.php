@@ -127,6 +127,7 @@ class emailclass{
         $query = $db->get_results("select * from email where uid='$uid'");
         $id_array = array();
 
+        $db->debug;
         if ($query) {
             foreach($query as $next_key=>$next_row) {
                 $id_array[] = intval($next_row['id']);
