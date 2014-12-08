@@ -92,7 +92,7 @@ class emailclass{
         $email_from = $db->escape($email_from);
         $email_cc = $db->escape($email_cc);
         $scheduled = strtotime($db->escape($scheduled)); //to unix time stamp
-        $uid = get_user_id();
+        $uid = $authclass->get_user_id();
         $message = $db->escape($message);
         //insert into db
         $query = $db->query("INSERT INTO email (uid, email_from, email_to, email_cc, scheduledtime, messagebody) VALUES ('$uid', '$email_from', '$email_to', '$email_cc', '$scheduled', '$message'");
