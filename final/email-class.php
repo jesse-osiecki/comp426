@@ -129,7 +129,7 @@ class emailclass{
 
         $db->debug;
         if ($query) {
-            foreach($query as $next_key=>$next_row) {
+            foreach($query as $next_row) {
                 $id_array[] = intval($next_row['id']);
             }
         }
