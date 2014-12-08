@@ -94,7 +94,6 @@ class emailclass{
         $scheduled = strtotime($db->escape($scheduled)); //to unix time stamp
         $uid = $authclass->get_user_id();
         $message = $db->escape($message);
-        echo($scheduled);
         //insert into db
         $query = $db->query("INSERT INTO email (uid, email_from, email_to, email_cc, scheduledtime, messagebody) VALUES ('"
             . $uid .
@@ -110,6 +109,7 @@ class emailclass{
             . $message .
             "'"
         );
+        $db->debug();
         //make sure that the entry made it into the sql    
         if ($query) {
             $id = $db->insert_id;
