@@ -126,8 +126,7 @@ class emailclass{
         $uid = $authclass->get_user_id();
         $query = $db->get_results("select * from email where uid='$uid'");
         $id_array = array();
-
-        $db->debug;
+        $query = get_object_vars($query);
         if ($query) {
             foreach($query as $next_row) {
                 $id_array[] = intval($next_row['id']);
