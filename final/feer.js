@@ -3,7 +3,10 @@
 var then = new Date();
 var can_send = false;
 //DOM
+
+
 $(document).ready(function () {
+
 
     var change_date = jQuery.Event( "change" );
     $("#date-0").attr("value", then);
@@ -40,8 +43,32 @@ $(document).ready(function () {
             alert("Bad email format");
         }
     }
+    var form_submit_handler = function (e) {
+        e.preventDefault();
+        $.ajax(url_base + "/email.php",
+                {type: "POST",
+                    dataType: "json",
+                    data: $(this).serialize(),
+                    success: ajax_success_handler,
+                    error: ajax_error_handler,
+                });
+    };
+
+    var ajax_success_handler = function(data, textStatus, jqXHR) {
+        $('#returnstatus').html(jqXHR.status);
+        $('#returntext').html(jqXHR.responseText);
+    };
+
+    var ajax_error_handler = function(jqXHR, textStatus, errorThown) {
+        $('#returnstatus').html(jqXHR.status);
+        $('#returntext').html(jqXHR.responseText);
+    };
+    //function handler mapping
     $("[type='email']").bind("change", check_email);
     $("[type='date']").bind("change", update_date);
+    $('#restform').on('submit', form_submit_handler);
+
+
 });
 
 function validateEmail($email) {

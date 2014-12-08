@@ -17,7 +17,6 @@ $userauth->_authenticate();
         <!-- THIS SCRIPT IS SPECIFIC TO THE MAIN PAGE
         -->
         <script src="feer.js"></script>
-        <script src="rest-test.js"></script>
     </head>
 
     <body>
