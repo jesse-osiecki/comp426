@@ -35,7 +35,7 @@ $userauth->_authenticate();
             <!-- Start main html
             -->
 
-            <div id="restform" class="row">
+            <div class="row">
                 <form role="form" class="" id="restform">
                     <div id="params">
                         <div class="col-xs-2">
