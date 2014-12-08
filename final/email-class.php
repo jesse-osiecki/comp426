@@ -128,7 +128,7 @@ class emailclass{
         $id_array = array();
 
         if ($query) {
-            while ($next_row = $query->fetch_array()) {
+            foreach($query as $next_key=>$next_row) {
                 $id_array[] = intval($next_row['id']);
             }
         }
