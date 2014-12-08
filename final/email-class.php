@@ -127,12 +127,12 @@ class emailclass{
         $query = $db->get_results("select * from email where uid='$uid'");
         $id_array = array();
         if ($query) {
-            foreach($query as $next=>$next_row) {
-                if(array_key_exists('id', $next_row)){
-                    echo($db->vardump($next_row));
-                    //$id_array[] = intval($next_row['id']);
+            foreach($query $next=>$next_row) {
+                if(isset($next_row->id)){
+                    echo($next_row->id);
+                    $id_array[] = intval($next_row);
                 }
-                echo(json_encode($id_array));
+                //echo(json_encode($id_array));
                 //echo(json_encode($next) . " ||| " . json_encode($next_row));
             }
         }
