@@ -10,15 +10,15 @@ $(document).ready(function () {
 
     //////////////////////
     //What to do when the user hits submit
-    $('#submit').click(function( event ) {
-        //event.preventDefault();
-        ////Post to the test.php page and get content which has been returned in json format (<?php echo json_encode(array("name"=>"John","time"=>"2pm")); ?>).
-        //var posting = $.post( "submit.php", { func: "getAttr" }, function() {
-        //    //console.log( data.name ); // John
-        //    console.log( then ); // time to send
-        //}, "json");
-        alert("Submit");
-    });
+    //$('#submit').click(function( event ) {
+    //    event.preventDefault();
+    //    //Post to the test.php page and get content which has been returned in json format (<?php echo json_encode(array("name"=>"John","time"=>"2pm")); ?>).
+    //    var posting = $.post( "submit.php", { func: "getAttr" }, function() {
+    //        //console.log( data.name ); // John
+    //        console.log( then ); // time to send
+    //    }, "json");
+    //    alert("Submit");
+    //});
 
     //UPDATE the date
     var update_date = function() {
