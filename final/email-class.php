@@ -115,7 +115,7 @@ class emailclass{
                 $email_info['email_to'],
                 $email_info['email_cc'],
                 $email_info['scheduledtime'],
-                $email_info['messagebody'],
+                $email_info['messagebody']
             );
         }
         return null;
