@@ -154,7 +154,7 @@ else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $date = "";
     if (isset($_REQUEST['date'])) {
-      $time = trim($_REQUEST['date']);
+      $date = trim($_REQUEST['date']);
     }
     $message = "";
     if (isset($_REQUEST['message'])) {
