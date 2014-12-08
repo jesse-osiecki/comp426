@@ -36,10 +36,6 @@ $userauth->_authenticate();
             -->
 
             <div id="restform" class="row">
-                <select id="methodselect" name=method>
-                    <option value="GET">GET</option>
-                    <option value="POST">POST</option>
-                </select>
                 <form role="form" class="" id="restform">
                     <div id="params">
                         <div class="col-xs-2">

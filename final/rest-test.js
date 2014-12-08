@@ -5,10 +5,6 @@ $(document).ready(function () {
 			$(e).val('');
 		    });
 	    });
-	$('#addparam').on('click', function () {
-		var new_param = $("<div>Name: <input class='pname' type=text> Value: <input class='pval' type=text></div>");
-		$('#params').append(new_param);
-	    });
     });
 
 var form_submit_handler = function (e) {
@@ -31,7 +27,7 @@ var form_submit_handler = function (e) {
 
     // Set up settings for AJAX call
     var settings = {
-	type: $('#methodselect option:selected').val(),
+	type: 'POST',
 	data: data_pairs,
 	success: ajax_success_handler,
 	error: ajax_error_handler,
