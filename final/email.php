@@ -82,11 +82,6 @@ else if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $new_cc = false;
     if (isset($_REQUEST['cc'])) {
       $new_cc = trim($_REQUEST['cc']);
-      if ($new_cc == "") {
-	header("HTTP/1.0 400 Bad Request");
-	print("Bad cc");
-	exit();
-      }
     }
 
     $new_to = false;
@@ -157,9 +152,9 @@ else if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $cc = trim($_REQUEST['cc']);
     }
 
-    $time = "";
-    if (isset($_REQUEST['time'])) {
-      $time = trim($_REQUEST['time']);
+    $date = "";
+    if (isset($_REQUEST['date'])) {
+      $time = trim($_REQUEST['date']);
     }
     $message = "";
     if (isset($_REQUEST['message'])) {
@@ -167,7 +162,7 @@ else if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     // Create new email via ORM
-    $new_email = emailclass::_create_email($from, $to, $cc, $time, $message);
+    $new_email = emailclass::_create_email($from, $to, $cc, $date, $message);
 
     // Report if failed
     if ($new_email == null) {
