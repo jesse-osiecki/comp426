@@ -106,7 +106,7 @@ else if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $new_date = true;
       $date_str = trim($_REQUEST['date']);
       if ($date_str != "") {
-	$new_date_obj = new DateTime($date_str);
+	$new_date_obj = $date_str;
       }
     }
 
