@@ -62,19 +62,28 @@ class emailclass{
         global $db;
 
         $result = $db->query("update email set " .
-            "title=" .
-            "'" . $mysqli->real_escape_string($this->title) . "', " .
-            "note=" .
-            "'" . $mysqli->real_escape_string($this->note) . "', " .
-            "project=" .
-            "'" . $mysqli->real_escape_string($this->project) . "', " .
-            "due_date=" . $dstr . ", " .
-            "priority=" . $this->priority . ", " .
-            "complete=" . $cstr . 
+            "email_from=" .
+            "'" . $db->escape($this->from) . "', " .
+            "email_to=" .
+            "'" . $db->escape($this->to) . "', " .
+            "email_cc=" .
+            "'" . $db->escape($this->cc) . "', " .
+            "scheduledtime=" . $db->escape($this->time) . ", " .
+            "messagebody=" .
+            "'" . $db->escape($this->message) . "' " .
             " where id=" . $this->id);
         return $result;
     }
-
+    public function getJSON() {
+        $json_obj = array('id' => $this->id,
+            'from' => $this->from,
+            'to' => $this->to,
+            'cc' => $this->cc,
+            'time' => $this->time,
+            'message' => $this->message
+        );
+        return json_encode($json_obj);
+    }
     public static function _create_email($email_from, $email_to, $email_cc, $scheduled, $message) {
         global $db;
         $authclass = new userauth();
@@ -104,18 +113,17 @@ class emailclass{
         $uid = $authclass->get_user_id();
         if($uid != -1){
             $query = $db->get_row("select * from email where id='$id' and uid='$uid'");
-            if ($query->num_rows == 0) {
+            if ($query == null) {
                 return null;
             }
-            $email_info = $query->fetch_array();
             return new emailclass(
-                intval($email_info['id']),
-                intval($email_info['uid']),
-                $email_info['email_from'],
-                $email_info['email_to'],
-                $email_info['email_cc'],
-                $email_info['scheduledtime'],
-                $email_info['messagebody']
+                intval($query->id),
+                intval($query->uid),
+                $query->email_from,
+                $query->email_to,
+                $query->email_cc,
+                $query->scheduledtime,
+                $query->messagebody
             );
         }
         return null;
