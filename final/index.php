@@ -70,20 +70,20 @@ $userauth->_authenticate();
                     </div>
                     <div class="row">
                         <div class="col-xs-2">
+                            <label>Email ID:</label> 
+                        </div>
+                        <div class="col-xs-2">
+                            <input id="postid" type="text" class="form-control pval" placeholder="Enter id if updating"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
                             <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-md">Send to Queue</button>
                         </div>
                     </div>
                 </form>
             </div>
 
-            <div class="row">
-                <div class="col-xs-2">
-                    <label>Email ID:</label> 
-                </div>
-                <div class="col-xs-2">
-                    <input id="postid" type="text" class="form-control pval" placeholder="Enter id if updating"/>
-                </div>
-            </div>
 
             <h2>Other Email Functions</h2>
 
