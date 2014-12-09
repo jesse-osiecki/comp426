@@ -96,7 +96,7 @@ else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $new_body = false;
     if (isset($_REQUEST['message'])) {
-      $new_note = trim($_REQUEST['message']);
+      $new_body = trim($_REQUEST['message']);
     }
 
 
