@@ -47,6 +47,7 @@ $(document).ready(function () {
         var url = url_base + "/email.php";
         var postid = $('#postid').val();
         url = (postid) ? (url + "/" + postid) : url;
+        console.log(postid);
         $.ajax(url,
                 {type: "POST",
                     dataType: "json",
