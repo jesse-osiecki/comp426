@@ -14,6 +14,12 @@ foreach($query as $key=>$row){
         'X-Mailer: PHP/' . phpversion();
     $mail = mail($to, $subject, $message, $headers);
     echo $mail ? "true " : "false ";
-    echo($row->id . "\n");
+    echo(" " . $row->id . " ");
+    
+    if($mail){//the message is sent
+        $id = $row->id;
+        $delete_query = $db->query("delete from email where id=" . $db->escape($id));
+        echo("deleted\n");
+    }
 }
 ?>
