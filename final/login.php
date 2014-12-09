@@ -23,7 +23,7 @@
             <h1>The Friendly Everyday Email Robot</h1>
             <h2> Login: </h2>
             <div class="row">
-                <form action="login-action.php" method="post" role="form" class="row">
+                <form action="login-action.php" method="post" role="form">
                     <fieldset>
                         <div class="col-xs-2">
                             <label for="username">Username: </label>
@@ -48,7 +48,7 @@
             </div>
             <h2> Create an Account: </h2>
             <div class="row">
-                <form action="create-user-action.php" method="post" role="form" class="row">
+                <form action="create-user-action.php" method="post" role="form">
                     <fieldset>
                         <div class="col-xs-2">
                             <label for="username">Username: </label>
