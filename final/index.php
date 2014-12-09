@@ -22,7 +22,7 @@ $userauth->_authenticate();
     <body>
         <div class="bg"></div>
         <div class=jumbotron>
-            <div class="row col-lg-6">
+            <div class="row">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
