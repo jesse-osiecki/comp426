@@ -1,5 +1,5 @@
 <?php
 include_once 'db.php'
-global $db;
+//global $db;
 $db->debug();
 ?>
