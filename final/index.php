@@ -62,26 +62,35 @@ $userauth->_authenticate();
                     </div>
                 </form>
             </div>
+
+            <h2>Other Email Functions</h2>
+
+
             <div class="row">
-                <h2>Other Email Functions</h2>
-                <form role="form" class="" id="getform">
-                    <div class="col-xs-2">
-                        <label>Email ID:</label> 
-                        <input name="id" type="text" class="form-control pval" placeholder="Enter id"/>
-                    </div>
+                <div class="col-xs-2">
+                    <label>Email ID:</label> 
+                    <input name="getid" type="text" class="form-control pval" placeholder="Enter id"/>
+                </div>
+
+                <form role="form" class="" id="deleteform">
                     <div class="col-xs-2">
                         <button id="delete" name="delete_button" type="submit" class="btn btn-primary btn-lg">Delete by id</button>
                     </div>
-                    <div class="col-xs-2">
-                        <button id="getbyid" name="id_button" type="submit" class="btn btn-primary btn-lg">Get Email by ID</button>
-                    </div>
+                </form>
+
+                <form role="form" class="" id="listform"> 
                     <div class="col-xs-2">
                         <button id="listids" name="list_button" type="submit" class="btn btn-primary btn-lg">List all ID's</button>
                     </div>
                 </form>
+
+                <form role="form" class="" id="getform"> 
+                    <div class="col-xs-2">
+                        <button id="getbyid" name="id_button" type="submit" class="btn btn-primary btn-lg">Get Email by ID</button>
+                    </div>
+                </form>
             </div>
 
-            </div>
             <div id="results">
             <div>Return Status: <span id="returnstatus"></span></div>
             <div>Return Text:

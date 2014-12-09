@@ -55,10 +55,9 @@ $(document).ready(function () {
     var get_handler = function (e) {
         e.preventDefault();
         console.log( $( this ).serialize() );   
-        $.ajax(url_base + "/email.php",
+        $.ajax(url_base + "/email.php/" + $('#getid').value(),
                 {type: "GET",
                     dataType: "json",
-                    data: $(this).serialize(),
                     success: ajax_success_handler,
                     error: ajax_error_handler
                 });
@@ -68,6 +67,7 @@ $(document).ready(function () {
     $("[type='email']").bind("change", check_email);
     $("[type='date']").bind("change", update_date);
     $('#restform').on('submit', form_submit_handler); //SUBMIT EMAIL FOR CREATION
+
     $('#getform').on('submit', get_handler); //get email stuff
 
 
