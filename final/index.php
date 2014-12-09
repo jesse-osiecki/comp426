@@ -54,7 +54,7 @@ $userauth->_authenticate();
                             <input type="date" name="date" class="form-control pval" id="date-0">
                         </div>
                         <div class="col-xs-5">
-                            <textarea class="form-control col-lg-10 pval" id="body" placeholder="Enter Message"  name=""></textarea>
+                            <textarea class="form-control col-lg-10 pval" id="body" placeholder="Enter Message"  name="message"></textarea>
                         </div>
                     </div>
                     <div class="row main">
