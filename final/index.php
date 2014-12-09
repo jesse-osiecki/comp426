@@ -35,8 +35,12 @@ $userauth->_authenticate();
             -->
 
             <div class="row">
-                <label>Email ID:</label> 
-                <input id="postid" type="text" class="form-control pval" placeholder="Enter id if updating"/>
+                <div class="col-xs-2">
+                    <label>Email ID:</label> 
+                </div>
+                <div class="col-xs-2">
+                    <input id="postid" type="text" class="form-control pval" placeholder="Enter id if updating"/>
+                </div>
             </div>
             <div class="row">
                 <form role="form" class="" id="restform">
