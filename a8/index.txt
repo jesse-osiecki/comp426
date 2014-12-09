@@ -1,0 +1,27 @@
+A description of the JSON encoded representation for the resource:
+{"id":1,
+"from":"me@me.com",
+"to":"you@you.com",
+"cc":"them@them.com",
+"time":1418086332,
+"message":"This is the body"}
+
+Where:
+    id is a unique autoincrementing primary key for the db
+    from is the address on the from line of the email
+    to is the address on the to line of the email
+    cc is the address on the cc line of the email
+    time is a unix time stamp for when the message should be scheduled
+    message is the body of the message
+
+A description of each of the URL types including what parameters are supported, any restrictions on parameter values, and which parameters are necessary vs. optional:
+
+GET:
+    base_url/email.php
+        returns a id listing of all emails in the user's session
+    base_url/email.php/<id>
+        returns a JSON encoded email object based on an id
+POST:
+
+A link to a page that demonstrates the RESTful interface:
+

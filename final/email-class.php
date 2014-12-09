@@ -17,7 +17,7 @@ class emailclass{
 
     public function delete(){
         global $db;
-        $result = $db->query("delete from email where id='" . $db->escape($id) . "'");
+        $result = $db->query("delete from email where id='" . $db->escape($this->id) . "'");
         return $result;
     }
 
