@@ -57,12 +57,12 @@ $userauth->_authenticate();
                             <textarea class="form-control col-lg-10 pval" id="body" placeholder="Enter Message"  name=""></textarea>
                         </div>
                     </div>
+                    <div class="row main">
+                        <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-lg">Send to Queue</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="row main">
-                <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-lg">Send to Queue</button>
-            </div>
 
             <div id="results">
             <div>Return Status: <span id="returnstatus"></span></div>
