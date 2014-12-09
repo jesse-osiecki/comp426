@@ -1,7 +1,6 @@
 <?php
 include_once 'db.php';
 global $db;
-$boolarray = Array(false => 'false', true => 'true');
 $now = time(); //get current unix time
 
 $query = $db->get_results("select * from email where scheduledtime<='$now'");
@@ -14,6 +13,7 @@ foreach($query as $key=>$row){
     $headers .= 'Reply-To: ' . $row->email_from . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
     $mail = mail($to, $subject, $message, $headers);
-    echo($boolarray[$mail] . $row->id . "\n");
+    echo $mail ? "true " : "false ";
+    echo($row->id . "\n");
 }
 ?>
