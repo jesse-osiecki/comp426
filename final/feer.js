@@ -51,11 +51,22 @@ $(document).ready(function () {
                     error: ajax_error_handler
                 });
     };
+    var get_handler = function (e) {
+        e.preventDefault();
+        $.ajax(url_base + "/email.php",
+                {type: "GET",
+                    dataType: "json",
+                    data: $(this).serialize(),
+                    success: ajax_success_handler,
+                    error: ajax_error_handler
+                });
+    };
 
     //function handler mapping
     $("[type='email']").bind("change", check_email);
     $("[type='date']").bind("change", update_date);
     $('#restform').on('submit', form_submit_handler); //SUBMIT EMAIL FOR CREATION
+    $('#getform').on('submit', get_handler); //get email stuff
 
 
 });
