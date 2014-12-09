@@ -55,7 +55,7 @@ $(document).ready(function () {
     var get_handler = function (e) {
         e.preventDefault();
         console.log( $( this ).serialize() );   
-        $.ajax(url_base + "/email.php/" + $('#getid').value(),
+        $.ajax(url_base + "/email.php/" + $('#getid').val(),
                 {type: "GET",
                     dataType: "json",
                     success: ajax_success_handler,
