@@ -68,8 +68,10 @@ $userauth->_authenticate();
                             </div>
                         </div>
                     </div>
-                    <div class="row main">
-                        <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-md">Send to Queue</button>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-md">Send to Queue</button>
+                        </div>
                     </div>
                 </form>
             </div>
