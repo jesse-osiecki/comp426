@@ -34,5 +34,13 @@ POST:
                 date: the time (in a full date-time representation) that the email should be scheduled to send
                 message: the body of the message
     base_url/email.php/<id>
+        Update an email object and already in the db(returns the email object that is created):
+            Params (all technically optional):
+                from: the email address for the from line on the email
+                to: the email address for the to line on the email
+                cc: the email address for the cc line on the email
+                date: the time (in a full date-time representation) that the email should be scheduled to send
+                message: the body of the message
 A link to a page that demonstrates the RESTful interface:
-
+    login at the main page: https://jessejosiecki.com/comp426/final/
+    the restful api is at this url: https://jessejosiecki.com/comp426/final/email.php
