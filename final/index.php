@@ -22,7 +22,7 @@ $userauth->_authenticate();
     <body>
         <div class="bg"></div>
         <div class=jumbotron>
-            <div class="row">
+            <div class="row col-xs-2">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
@@ -34,7 +34,7 @@ $userauth->_authenticate();
             <!-- Start main html
             -->
 
-            <div class="row main">
+            <div class="row col-xs-2">
                 <form role="form" class="" id="restform">
                     <div id="params">
                         <div class="col-xs-2">
