@@ -40,6 +40,14 @@ $userauth->_authenticate();
             <!-- Start main html
             -->
 
+            <div class="row">
+                <div class="col-xs-2">
+                    <label>Email ID:</label> 
+                </div>
+                <div class="col-xs-2">
+                    <input id="postid" type="text" class="form-control pval" placeholder="Enter id if updating"/>
+                </div>
+            </div>
             <div>
                 <form role="form" class="" id="restform">
                     <div id="params">
@@ -66,14 +74,6 @@ $userauth->_authenticate();
                             <div class="col-xs-2">
                                 <textarea class="form-control col-lg-10 pval" id="body" placeholder="Enter Message"  name="message"></textarea>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <label>Email ID:</label> 
-                        </div>
-                        <div class="col-xs-2">
-                            <input id="postid" type="text" class="form-control pval" placeholder="Enter id if updating"/>
                         </div>
                     </div>
                     <div class="row">
