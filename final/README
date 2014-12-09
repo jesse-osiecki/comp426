@@ -4,3 +4,8 @@ The Friendly Everyday Email Robot
 Credit:
 thanks http://www.intechgrity.com/login-logout-and-administrate-using-php-session-cookie-mysql-version-2-with-remember-me-option/# 
 this has a modified version of the authentication on that page
+
+
+To setup the DB run the setup.sql commands in the mysql-cli
+Then you will also need to setup cron to send the emails. A line like:
+	* * * * * /usr/bin/php path_to_feer_root/cron.php
