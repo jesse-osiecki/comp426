@@ -27,15 +27,19 @@ $userauth->_authenticate();
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
                 </ul>
-                <h1>The Friendly Everyday Email Robot</h1>
-                <p class="lead">Welcome <?php echo $userauth->get_nicename($_SESSION['user_login']); ?> </p>
-                <input type="button" onclick="javascript:window.location.href='logout.php'" value="logout" class="btn btn-primary btn-sm"/>
             </div>
+            <h1>The Friendly Everyday Email Robot</h1>
+            <p class="lead">Welcome <?php echo $userauth->get_nicename($_SESSION['user_login']); ?> </p>
+            <input type="button" onclick="javascript:window.location.href='logout.php'" value="logout" class="btn btn-primary btn-sm"/>
             <!-- Start main html
             -->
 
             <div class="row">
                 <form role="form" class="" id="restform">
+                    <div class="col-xs-2">
+                        <label>Email ID:</label> 
+                        <input id="postid" type="text" class="form-control pval" placeholder="Enter id if updating"/>
+                    </div>
                     <div id="params">
                         <div class="col-xs-2">
                             <label>From:</label> 
