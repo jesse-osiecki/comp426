@@ -18,10 +18,21 @@ A description of each of the URL types including what parameters are supported, 
 
 GET:
     base_url/email.php
-        returns a id listing of all emails in the user's session
+        Returns a id listing of all emails in the user's session:
     base_url/email.php/<id>
-        returns a JSON encoded email object based on an id
-POST:
+        Returns a JSON encoded email object based on an id:
+        params (Optional):
+            delete (true/false) -- if we would like to delete the specified object
 
+POST:
+    base_url/email.php
+        Create a new email object and store it in the db(returns the email object that is created):
+            Params (all technically optional):
+                from: the email address for the from line on the email
+                to: the email address for the to line on the email
+                cc: the email address for the cc line on the email
+                date: the time (in a full date-time representation) that the email should be scheduled to send
+                message: the body of the message
+    base_url/email.php/<id>
 A link to a page that demonstrates the RESTful interface:
 

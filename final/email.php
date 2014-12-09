@@ -53,7 +53,7 @@ else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   // Either creating or updating
 
-  // Following matches /rest.php/<id> form
+  // Following matches /email.php/<id> form
   if ((count($path_components) >= 2) &&
       ($path_components[1] != "")) {
 
@@ -95,8 +95,8 @@ else if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     $new_body = false;
-    if (isset($_REQUEST['body'])) {
-      $new_note = trim($_REQUEST['body']);
+    if (isset($_REQUEST['message'])) {
+      $new_note = trim($_REQUEST['message']);
     }
 
 
