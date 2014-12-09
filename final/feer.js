@@ -2,7 +2,7 @@
 //var now = new Date();
 var then = new Date();
 var can_send = false;
-var url_base = "https://jessejosiecki.com/comp426/final";
+var url_base = "https://strato.mooo.com/comp426/final";
 //DOM
 
 
