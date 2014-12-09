@@ -21,6 +21,8 @@
                 </ul>
                 <h1>The Friendly Everyday Email Robot</h1>
             </div>
+        </div>
+        <div class="row">
             <h2> Login: </h2>
             <form action="login-action.php" method="post" role="form" class="row">
                 <fieldset>
@@ -44,6 +46,8 @@
                     <input type="submit" value="Submit" class="btn btn-primary btn-xs"/>
                 </div>
             </form>
+        </div>
+        <div class="row">
             <h2> Create an Account: </h2>
             <form action="create-user-action.php" method="post" role="form" class="row">
                 <fieldset>
