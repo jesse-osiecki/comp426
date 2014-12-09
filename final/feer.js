@@ -44,7 +44,10 @@ $(document).ready(function () {
     var form_submit_handler = function (e) {
         e.preventDefault();
         console.log( $( this ).serialize() );
-        $.ajax(url_base + "/email.php",
+        var url = url_base + "/email.php";
+        var postid = $('#postid').val();
+        url = (postid) ? (url + "/" + postid) : url;
+        $.ajax(url,
                 {type: "POST",
                     dataType: "json",
                     data: $(this).serialize(),

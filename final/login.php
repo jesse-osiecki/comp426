@@ -19,8 +19,8 @@
                     <li class="active"><a href="#">Login</a></li>
                     <li><a href="https://github.com/stratosmacker/comp426/">Source Code</a></li>
                 </ul>
-                <h1>The Friendly Everyday Email Robot</h1>
             </div>
+            <h1>The Friendly Everyday Email Robot</h1>
             <div class="row">
                 <h2> Login: </h2>
                 <form action="login-action.php" method="post" role="form" class="row">
