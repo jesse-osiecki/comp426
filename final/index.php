@@ -69,7 +69,7 @@ $userauth->_authenticate();
             <div class="row">
                 <div class="col-xs-2">
                     <label>Email ID:</label> 
-                    <input name="getid" type="text" class="form-control pval" placeholder="Enter id"/>
+                    <input id="getid" type="text" class="form-control pval" placeholder="Enter id"/>
                 </div>
 
                 <form role="form" class="" id="deleteform">
