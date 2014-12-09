@@ -29,39 +29,51 @@ $userauth->_authenticate();
                 </ul>
             </div>
             <h1>The Friendly Everyday Email Robot</h1>
-            <p class="lead">Welcome <?php echo $userauth->get_nicename($_SESSION['user_login']); ?> </p>
-            <input type="button" onclick="javascript:window.location.href='logout.php'" value="logout" class="btn btn-primary btn-sm"/>
+            <div class="row">
+                <div class="col-xs-2">
+                    <p class="lead">Welcome <?php echo $userauth->get_nicename($_SESSION['user_login']); ?> </p>
+                </div>
+                <div class="col-xs-2">
+                    <input type="button" onclick="javascript:window.location.href='logout.php'" value="logout" class="btn btn-primary btn-sm"/>
+                </div>
+            </div>
             <!-- Start main html
             -->
 
-            <div class="row">
+            <div>
                 <form role="form" class="" id="restform">
                     <div id="params">
-                        <div class="col-xs-2">
-                            <label>From:</label> 
-                            <input name="from" type="email" class="form-control pval" placeholder="Enter email"/>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>From:</label> 
+                                <input name="from" type="email" class="form-control pval" placeholder="Enter email"/>
+                            </div>
+                            <div class=col-xs-2>
+                                <label>To:</label>
+                                <input name="to" type="email" class="form-control pval" placeholder="Enter email"/>
+                            </div>
+                            <div class=col-xs-2>
+                                <label>CC:</label>
+                                <input name="cc" type="email" class="form-control pval" placeholder="Enter email"/>
+                            </div>
+                            <div class="col-xs-2">
+                                <label for="date-0">When?</label>
+                                <input type="date" name="date" class="form-control pval" id="date-0">
+                            </div>
                         </div>
-                        <div class=col-xs-2>
-                            <label>To:</label>
-                            <input name="to" type="email" class="form-control pval" placeholder="Enter email"/>
-                        </div>
-                        <div class=col-xs-2>
-                            <label>CC:</label>
-                            <input name="cc" type="email" class="form-control pval" placeholder="Enter email"/>
-                        </div>
-                        <div class="col-xs-5">
-                            <label for="date-0">When?</label>
-                            <input type="date" name="date" class="form-control pval" id="date-0">
-                        </div>
-                        <div class="col-xs-5">
-                            <textarea class="form-control col-lg-10 pval" id="body" placeholder="Enter Message"  name="message"></textarea>
+
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <textarea class="form-control col-lg-10 pval" id="body" placeholder="Enter Message"  name="message"></textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="row main">
-                        <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-lg">Send to Queue</button>
+                        <button id="submit" name="send_button" type="submit" class="btn btn-primary btn-md">Send to Queue</button>
                     </div>
                 </form>
             </div>
+
             <div class="row">
                 <div class="col-xs-2">
                     <label>Email ID:</label> 
@@ -82,19 +94,19 @@ $userauth->_authenticate();
 
                 <form role="form" class="" id="deleteform">
                     <div class="col-xs-2">
-                        <button id="delete" name="delete_button" type="submit" class="btn btn-primary btn-lg">Delete by id</button>
+                        <button id="delete" name="delete_button" type="submit" class="btn btn-primary btn-xs">Delete by id</button>
                     </div>
                 </form>
 
                 <form role="form" class="" id="listform"> 
                     <div class="col-xs-2">
-                        <button id="listids" name="list_button" type="submit" class="btn btn-primary btn-lg">List all ID's</button>
+                        <button id="listids" name="list_button" type="submit" class="btn btn-primary btn-xs">List all ID's</button>
                     </div>
                 </form>
 
                 <form role="form" class="" id="getform"> 
                     <div class="col-xs-2">
-                        <button id="getbyid" name="id_button" type="submit" class="btn btn-primary btn-lg">Get Email by ID</button>
+                        <button id="getbyid" name="id_button" type="submit" class="btn btn-primary btn-xs">Get Email by ID</button>
                     </div>
                 </form>
             </div>
