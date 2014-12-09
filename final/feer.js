@@ -62,6 +62,27 @@ $(document).ready(function () {
                     error: ajax_error_handler
                 });
     };
+    var list_handler = function (e) {
+        e.preventDefault();
+        console.log( $( this ).serialize() );   
+        $.ajax(url_base + "/email.php",
+                {type: "GET",
+                    dataType: "json",
+                    success: ajax_success_handler,
+                    error: ajax_error_handler
+                });
+    };
+    var delete_handler = function (e) {
+        e.preventDefault();
+        console.log( $( this ).serialize() );   
+        $.ajax(url_base + "/email.php/" + $('#getid').val(),
+                {type: "GET",
+                    dataType: "json",
+                    data: "delete=true",
+                    success: ajax_success_handler,
+                    error: ajax_error_handler
+                });
+    };
 
     //function handler mapping
     $("[type='email']").bind("change", check_email);
@@ -69,6 +90,8 @@ $(document).ready(function () {
     $('#restform').on('submit', form_submit_handler); //SUBMIT EMAIL FOR CREATION
 
     $('#getform').on('submit', get_handler); //get email stuff
+    $('#listform').on('submit', list_handler); //list email stuff
+    $('#deleteform').on('submit', delete_handler); //delete email stuff
 
 
 });
