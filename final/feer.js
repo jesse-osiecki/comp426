@@ -43,6 +43,7 @@ $(document).ready(function () {
     };
     var form_submit_handler = function (e) {
         e.preventDefault();
+        console.log( $( this ).serialize() );
         $.ajax(url_base + "/email.php",
                 {type: "POST",
                     dataType: "json",
@@ -53,6 +54,7 @@ $(document).ready(function () {
     };
     var get_handler = function (e) {
         e.preventDefault();
+        console.log( $( this ).serialize() );   
         $.ajax(url_base + "/email.php",
                 {type: "GET",
                     dataType: "json",
